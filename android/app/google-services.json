@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "562586815249",
+    "project_id": "sgpmobileauth",
+    "storage_bucket": "sgpmobileauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562586815249:android:cc8a6535b536c006391ab0",
+        "android_client_info": {
+          "package_name": "com.jaimin.sgp_ejewellery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "562586815249-sqhsdlls2ei5bigrcb30thb7ge5lco31.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jaimin.sgp_ejewellery",
+            "certificate_hash": "a0c464243d4ac5214e06b08f3bef635ccbdb2203"
+          }
+        },
+        {
+          "client_id": "562586815249-guv6btb3jnctraeodcji3eburfph9tl3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp1YvvnSGhj_e-u9aFoflzRhRc2jNMECo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "562586815249-guv6btb3jnctraeodcji3eburfph9tl3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
