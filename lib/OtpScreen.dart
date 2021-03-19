@@ -93,16 +93,14 @@ class _OtpScreenState extends State<OtpScreen> {
         phoneNumber:'+91${widget.phoneNo}',
         verificationCompleted: (PhoneAuthCredential credential)async{
           await _auth.signInWithCredential(credential).then((value)async{
-           /* if(value.user!=null)
+            if(value.user!=null)
               {
                 //print('user LOGGED IN successfully');
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (context)=>Home()  ), (route) => false);
-              }*/
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context)=>Home()  ), (route) => false);
+              }
+
 
           });
 

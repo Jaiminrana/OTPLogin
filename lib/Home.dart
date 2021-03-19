@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
           IconButton(
               icon:Icon(Icons.person),
               onPressed:()async{
-                //await _auth.signOut();
+                await _auth.signOut();
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (context)=>LoginScreen()),
