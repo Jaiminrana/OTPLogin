@@ -1,6 +1,11 @@
+import 'user_list.dart';
+import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sgp_ejewellery/LoginPage.dart';
+import 'package:sgp_ejewellery/sgpuser.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sgp_ejewellery/Database.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -8,38 +13,63 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final FirebaseAuth _auth=FirebaseAuth.instance;
   String uid;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          title:Text('HOME SCREEN'),
-        actions: [
-          IconButton(
-              icon:Icon(Icons.person),
-              onPressed:()async{
-                await _auth.signOut();
+
+    void _showSettingpanel(){
+      showModalBottomSheet(context: context,builder: (context)
+      {
+        return Container(
+          padding: EdgeInsets.symmetric(vertical: 20.0,horizontal: 60.0),
+          child: Text('bottom sheet'),
+        );
+      }
+      );
+    }
+
+
+    return StreamProvider<List<sgpuser>>.value( //StreamProvider<QuerySnapshot>.value(
+      value: Database().user,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Home'),
+          actions: [
+        TextButton.icon(
+          style:TextButton.styleFrom(primary: Colors.black),
+        icon: Icon(Icons.person),
+          label: Text('logout'),
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
                 Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context)=>LoginScreen()),
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
                         (route) => false);
+              },
+            ),
+      TextButton.icon(
+        style:TextButton.styleFrom(primary: Colors.black),
+        icon: Icon(Icons.settings_applications_rounded),
+        label: Text('Setting'),
+        onPressed: () => _showSettingpanel(),
+    ),
+          ],
 
-              }),
-        ],
-
-      ),
-      body: Center(
-        child: Text('current user ID:'+uid),
+        ),
+        body: Center(
+          child: UserList(),//Text(uid),
+        ),
 
       ),
     );
   }
+
   @override
+  void initState() {
 
-  void initState(){
     super.initState();
-    uid=FirebaseAuth.instance.currentUser.uid;
-  }
+    //Database().user;
+    uid = FirebaseAuth.instance.currentUser.uid;
 
+  }
 }
